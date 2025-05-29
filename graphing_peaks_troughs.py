@@ -28,23 +28,22 @@ for lag in range(0, max_lag + 1):
     df[f'vix_lag_{lag}'] = df['vix_return'].shift(-lag)
 
 # Step 5: Subset to only oil spike days
-spike_df = df[df['is_peak']].copy() # <--------------------------- edit this line to use 'is_peak' for peaks
+spike_df = df[df['is_peak']].copy() # <--------------------------- edit this line to use 'is_trough' for trough
 vix_lag_cols = [f'vix_lag_{lag}' for lag in range(0, max_lag + 1)]
 spike_vix_lags = spike_df[vix_lag_cols]
 
 # Step 6: Compute average VIX return for each lag
 mean_vix_returns = spike_vix_lags.mean()
-# mean_vix_returns.to_csv('mean_vix_returns.csv', header=True)
 
 # Step 7: Plot results
 plt.figure(figsize=(10, 6))
 mean_vix_returns.plot()
-plt.title('Average VIX Return Following Oil Price Peaks (z-score > 2)')
+plt.title('Average VIX Return Following Oil Price Peaks (z-score > 2)') # <------------- edit title to reflect plot
 plt.xlabel('Lag (days after oil spike)')
 plt.ylabel('Mean VIX Return')
 plt.axhline(0, color='gray', linestyle='--')
 
-x_values = [81,76,13,71]
+x_values = [81,76,13,71] # <------------------------------------------ edit title to reflect plot
 for x in x_values:
     plt.axvline(x=x, color='red', linestyle='--')
 
@@ -52,6 +51,6 @@ plt.grid(True)
 plt.tight_layout()
 
 # Save the plot
-plt.savefig('peaks_vix_returns_plot.png', dpi=300)
+plt.savefig('peaks_vix_returns_plot.png', dpi=300) # <-------------- edit this line to use 'is_trough' for trough
 
 plt.show()
