@@ -43,7 +43,7 @@ plt.xlabel('Lag (days after oil spike)')
 plt.ylabel('Mean VIX Return')
 plt.axhline(0, color='gray', linestyle='--')
 
-x_values = [81,76,13,71] # <------------------------------------------ edit title to reflect plot
+x_values = [81,76,13,71] # <------------------------------------------ edit x values to reflect plot
 for x in x_values:
     plt.axvline(x=x, color='red', linestyle='--')
 
