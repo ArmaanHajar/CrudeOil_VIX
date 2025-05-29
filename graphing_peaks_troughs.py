@@ -51,6 +51,6 @@ plt.grid(True)
 plt.tight_layout()
 
 # Save the plot
-plt.savefig('peaks_vix_returns_plot.png', dpi=300) # <-------------- edit this line to use 'is_trough' for trough
+plt.savefig('peaks_vix_returns_plot.png', dpi=300) # <-------------- edit this line to use 'trough' for trough
 
 plt.show()
